@@ -1,0 +1,171 @@
+---
+const logos = [
+  { src: "/images/dekuiper.png", alt: "De Kuiper logo" },
+  { src: "/images/houwers.png", alt: "Houwers logo" },
+  { src: "/images/perfectvoip.png", alt: "PerfectVoip logo" },
+  { src: "/images/studiobalans.png", alt: "Studio Balans logo" },
+  { src: "/images/stormvans.png", alt: "Storm Vans logo" }
+];
+---
+
+<section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-xl md:text-2xl text-gray-700 font-medium">
+        We werken voor onder andere:
+      </h2>
+    </div>
+
+    <!-- Logos Container -->
+    <div class="relative">
+      <button
+        id="scroll-left"
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
+        aria-label="Scroll left"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <div class="overflow-hidden mx-16"> <!-- Changed from overflow-x-auto to overflow-hidden -->
+        <div
+          id="logos-scroll"
+          class="flex items-center gap-12 py-4 transition-transform duration-300 ease-out"
+          style="min-width: max-content;"
+        >
+          {[...logos, ...logos].map((logo, index) => (
+            <div
+              key={`${logo.alt}-${index}`}
+              class="flex-none w-[150px] grayscale hover:grayscale-0 transition-all duration-300 opacity-90 hover:opacity-100"
+            >
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                class="w-full h-16 object-contain"
+                loading="lazy"
+                draggable="false"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Arrow -->
+      <button
+        id="scroll-right"
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
+        aria-label="Scroll right"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainer = document.getElementById('logos-scroll');
+    const leftBtn = document.getElementById('scroll-left');
+    const rightBtn = document.getElementById('scroll-right');
+    const scrollAmount = 300;
+    let currentPosition = 0;
+
+    if (!scrollContainer || !leftBtn || !rightBtn) return;
+
+    // Calculate max scroll
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.parentElement.clientWidth;
+
+    // Button Controls
+    leftBtn.addEventListener('click', () => {
+      currentPosition = Math.min(currentPosition + scrollAmount, 0);
+      updatePosition();
+    });
+
+    rightBtn.addEventListener('click', () => {
+      currentPosition = Math.max(currentPosition - scrollAmount, -maxScroll);
+      updatePosition();
+    });
+
+    function updatePosition() {
+      scrollContainer.style.transform = `translateX(${currentPosition}px)`;
+    }
+
+    // Touch and Mouse Scroll
+    let isDown = false;
+    let startX;
+    let startPosition;
+
+    scrollContainer.addEventListener('mousedown', (e) => {
+      isDown = true;
+      scrollContainer.style.cursor = 'grabbing';
+      startX = e.pageX;
+      startPosition = currentPosition;
+      e.preventDefault();
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+      isDown = false;
+      scrollContainer.style.cursor = 'grab';
+    });
+
+    scrollContainer.addEventListener('mouseup', () => {
+      isDown = false;
+      scrollContainer.style.cursor = 'grab';
+    });
+
+    scrollContainer.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX;
+      const walk = (x - startX) * 1.5;
+      currentPosition = Math.max(
+        Math.min(startPosition + walk, 0),
+        -maxScroll
+      );
+      updatePosition();
+    });
+
+    // Touch events
+    scrollContainer.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX;
+      startPosition = currentPosition;
+    });
+
+    scrollContainer.addEventListener('touchend', () => {
+      isDown = false;
+    });
+
+    scrollContainer.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX;
+      const walk = (x - startX) * 1.5;
+      currentPosition = Math.max(
+        Math.min(startPosition + walk, 0),
+        -maxScroll
+      );
+      updatePosition();
+    });
+  });
+</script>
+
+<style>
+  #logos-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    will-change: transform;
+  }
+  
+  #logos-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  #logos-scroll img {
+    pointer-events: none;
+    user-select: none;
+  }
+</style>

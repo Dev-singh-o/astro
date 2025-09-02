@@ -1,0 +1,452 @@
+---
+// TestimonialsSection.astro
+--- ---
+<section class="bg-[#F4F4F5] py-16 lg:py-24">
+  <div class="max-w-8xl mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="text-[#2980B9] font-medium text-lg mb-2">Testimonials</div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+        Een tevreden klant staat bij ons centraal
+      </h2>
+    </div>
+
+    <!-- Testimonials Horizontal Scroll -->
+    <div class="relative">
+      <!-- Left Arrow -->
+      <button
+        id="testimonials-left"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
+        aria-label="Scroll left"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Testimonials Container -->
+      <div 
+        id="testimonials-scroll"
+        class="flex overflow-x-auto snap-x snap-mandatory gap-8 py-10 px-16 no-scrollbar"
+        style="scroll-behavior: smooth;"
+      >
+        <!-- Cloned cards for infinite scroll (end) -->
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              Evan heeft ons fantastisch geholpen met de website van onze Stichting. Hij is snel, praktisch, vriendelijk en doet goede voorstellen om tot de beste oplossing te komen. Ik beveel hem van harte aan!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Adriaan D</h4>
+                <p class="text-[#2980B9] text-sm">Vrienden van Mesdag</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              De samenwerking met Evan was uitstekend. Hij leverde een moderne, gebruiksvriendelijke website die perfect aansluit bij onze behoeften. Zijn communicatie en professionaliteit zijn top!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Sophie V</h4>
+                <p class="text-[#2980B9] text-sm">SeppR</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Main cards -->
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              Evan heeft ons fantastisch geholpen met de website van onze Stichting. Hij is snel, praktisch, vriendelijk en doet goede voorstellen om tot de beste oplossing te komen. Ik beveel hem van harte aan!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Adriaan D</h4>
+                <p class="text-[#2980B9] text-sm">Vrienden van Mesdag</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              De samenwerking met Evan was uitstekend. Hij leverde een moderne, gebruiksvriendelijke website die perfect aansluit bij onze behoeften. Zijn communicatie en professionaliteit zijn top!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Sophie V</h4>
+                <p class="text-[#2980B9] text-sm">SeppR</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              Evan’s expertise en toewijding hebben onze verwachtingen overtroffen. De website is niet alleen prachtig, maar ook super functioneel. Een echte aanrader!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Mark R</h4>
+                <p class="text-[#2980B9] text-sm">Storm van 's Gravesande</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Cloned cards for infinite scroll (start) -->
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              Evan heeft ons fantastisch geholpen met de website van onze Stichting. Hij is snel, praktisch, vriendelijk en doet goede voorstellen om tot de beste oplossing te komen. Ik beveel hem van harte aan!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Adriaan D</h4>
+                <p class="text-[#2980B9] text-sm">Vrienden van Mesdag</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="min-w-[400px] max-w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <div class="p-8">
+            <div class="text-[#2980B9] mb-6">
+              <img
+                src="/images/icons/cote.png"
+                alt="Quote icon"
+                class="w-10 h-10 object-none"
+              />
+            </div>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+              De samenwerking met Evan was uitstekend. Hij leverde een moderne, gebruiksvriendelijke website die perfect aansluit bij onze behoeften. Zijn communicatie en professionaliteit zijn top!
+            </p>
+            <div class="flex items-center space-x-1 mb-8">
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+              <img src="/images/icons/star.png" alt="Star rating" class="w-5 h-5 object-contain" />
+            </div>
+            <div class="flex items-center border-t border-gray-400 pt-8">
+              <div
+                class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4 overflow-hidden"
+              >
+                <img
+                  src="/images/testimonial.png"
+                  alt="Author image"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Sophie V</h4>
+                <p class="text-[#2980B9] text-sm">SeppR</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Arrow -->
+      <button
+        id="testimonials-right"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
+        aria-label="Scroll right"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="flex justify-center space-x-3 mt-8">
+      <button
+        class="pagination-dot w-3 h-3 bg-blue-500 rounded-full transition-colors duration-200"
+        data-index="0"
+      ></button>
+      <button
+        class="pagination-dot w-3 h-3 bg-gray-300 hover:bg-gray-400 rounded-full transition-colors duration-200"
+        data-index="1"
+      ></button>
+      <button
+        class="pagination-dot w-3 h-3 bg-gray-300 hover:bg-gray-400 rounded-full transition-colors duration-200"
+        data-index="2"
+      ></button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollContainer = document.getElementById("testimonials-scroll");
+    const leftBtn = document.getElementById("testimonials-left");
+    const rightBtn = document.getElementById("testimonials-right");
+    const cardWidth = 440; // card width + gap
+
+    // Touch scroll handling
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Button click handlers
+    leftBtn?.addEventListener("click", () => {
+      scrollContainer.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth"
+      });
+    });
+
+    rightBtn?.addEventListener("click", () => {
+      scrollContainer.scrollBy({
+        left: cardWidth,
+        behavior: "smooth"
+      });
+    });
+
+    // Mouse Events
+    scrollContainer.addEventListener('mousedown', (e) => {
+      isDown = true;
+      scrollContainer.style.cursor = 'grabbing';
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+      isDown = false;
+      scrollContainer.style.cursor = 'grab';
+    });
+
+    scrollContainer.addEventListener('mouseup', () => {
+      isDown = false;
+      scrollContainer.style.cursor = 'grab';
+    });
+
+    scrollContainer.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch Events
+    scrollContainer.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('touchend', () => {
+      isDown = false;
+    });
+
+    scrollContainer.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Scroll snap after scroll ends
+    let scrollTimeout;
+    scrollContainer.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollLeft = scrollContainer.scrollLeft;
+        const itemWidth = cardWidth;
+        const nearestItem = Math.round(scrollLeft / itemWidth);
+        
+        scrollContainer.scrollTo({
+          left: nearestItem * itemWidth,
+          behavior: 'smooth'
+        });
+      }, 150);
+    });
+  });
+</script>

@@ -1,0 +1,138 @@
+---
+// FAQ data
+const faqs = [
+  {
+    id: 1,
+    question: "Lorem ipsum dolor sit amet, consectetur.",
+    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    defaultOpen: true
+  },
+  {
+    id: 2,
+    question: "Lorem ipsum dolor sit amet, consectetur.",
+    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    defaultOpen: false
+  },
+  {
+    id: 3,
+    question: "Lorem ipsum dolor sit amet, consectetur.",
+    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    defaultOpen: false
+  },
+  {
+    id: 4,
+    question: "Lorem ipsum dolor sit amet, consectetur.",
+    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    defaultOpen: false
+  }
+];
+---
+
+<section class="bg-white py-16 px-6">
+  <div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="text-[#2980B9] text-sm font-medium mb-3">Veel gestelde vragen</p>
+      <h2 class="text-gray-900 text-3xl md:text-4xl font-bold">
+        Misschien staat jouw vraag hiertussen?
+      </h2>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden transition-colors duration-200">
+          <button 
+            class="faq-button w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none  "
+            data-faq={faq.id}
+            aria-expanded={faq.defaultOpen ? "true" : "false"}
+          >
+            <span class="text-gray-900 font-semibold text-lg pr-4">{faq.question}</span>
+            <svg 
+              class={`faq-icon w-5 h-5 text-gray-500 transition-transform duration-200 flex-shrink-0 ${faq.defaultOpen ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div 
+            class={`faq-content overflow-hidden transition-all duration-300 ease-in-out ${faq.defaultOpen ? 'max-h-96' : 'max-h-0'}`}
+            data-content={faq.id}
+          >
+            <div class="px-6 pb-5">
+              <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const faqId = button.getAttribute('data-faq');
+        const content = document.querySelector(`[data-content="${faqId}"]`);
+        const icon = button.querySelector('.faq-icon');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        // Reset all FAQ items
+        document.querySelectorAll('.faq-item').forEach((item) => {
+          item.setAttribute('data-active', 'false');
+        });
+        
+        // Close all other FAQs
+        faqButtons.forEach((otherButton) => {
+          if (otherButton !== button) {
+            const otherFaqId = otherButton.getAttribute('data-faq');
+            const otherContent = document.querySelector(`[data-content="${otherFaqId}"]`);
+            const otherIcon = otherButton.querySelector('.faq-icon');
+            
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherContent.style.maxHeight = '0';
+            otherIcon.classList.remove('rotate-180');
+          }
+        });
+        
+        // Toggle current FAQ
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          content.style.maxHeight = '0';
+          icon.classList.remove('rotate-180');
+          button.closest('.faq-item').setAttribute('data-active', 'false');
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.classList.add('rotate-180');
+          button.closest('.faq-item').setAttribute('data-active', 'true');
+        }
+      });
+    });
+    
+    // Set initial state for default open FAQ
+    document.querySelectorAll('[data-content]').forEach((content) => {
+      const button = document.querySelector(`[data-faq="${content.getAttribute('data-content')}"]`);
+      if (button.getAttribute('aria-expanded') === 'true') {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        button.closest('.faq-item').setAttribute('data-active', 'true');
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-content {
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  .faq-item[data-active="true"] {
+    border-color: #2980B9;
+  }
+</style>

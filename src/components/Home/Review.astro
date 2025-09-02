@@ -1,0 +1,286 @@
+---
+// You can add any props or data fetching here if needed
+const teamMembers = [
+  {
+    id: 1,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile1.png",
+  },
+  {
+    id: 2,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile2.png",
+  },
+  {
+    id: 3,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile3.png",
+  },
+  {
+    id: 4,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile4.png",
+  },
+  {
+    id: 5,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile1.png",
+  },
+  {
+    id: 6,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile2.png",
+  },
+  {
+    id: 7,
+    name: "Naam Persoon",
+    role: "Functie van deze persoon",
+    image:
+      "images/profile3.png",
+  },
+];
+
+const stats = [
+  { value: "10+", label: "Jaar ervaring" },
+  { value: "6", label: "Professionals" },
+  { value: "40+", label: "Tevreden klanten" },
+];
+---
+
+<section class="bg-[#1A4060] py-16 px-6">
+  <div class="max-w-8xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="text-[#8FC5EA] text-sm font-medium mb-3">Over EdenIT</p>
+      <h2 class="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-10">
+        Persoonlijk en professionele aanpak
+      </h2>
+      <p class="text-slate-100 text-lg leading-relaxed max-w-3xl mx-auto">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 max-w-3xl mx-auto gap-8 mb-16">
+      {
+        stats.map((stat) => (
+          <div class="text-center">
+            <div class="bg-[#194C73] shadow rounded-lg p-6 backdrop-blur-sm">
+              <div class="text-white text-2xl md:text-3xl font-semibold mb-2">
+                {stat.value}
+              </div>
+              <div class="text-slate-100 text-sm md:text-base">
+                {stat.label}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Team Members -->
+    <div class="relative">
+      <!-- Left Arrow -->
+      <button
+        id="team-left"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group"
+        aria-label="Scroll left"
+      >
+        <svg
+          class="w-6 h-6 text-slate-700 group-hover:-translate-x-0.5 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Team Members Container -->
+      <div
+        id="team-scroll"
+        class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-16"
+      >
+        {
+          teamMembers.map((member) => (
+            <div class="flex-none w-72 snap-start">
+              <div class="rounded-2xl p-1">
+                <div class="overflow-hidden">
+                  <div class="aspect-square overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      class="w-full h-full rounded-2xl object-cover"
+                    />
+                  </div>
+                  <div class="py-6 text-start">
+                    <h3 class="text-white text-xl font-semibold mb-2">
+                      {member.name}
+                    </h3>
+                    <p class="text-slate-100 text-sm">{member.role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Right Arrow -->
+      <button
+        id="team-right"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group"
+        aria-label="Scroll right"
+      >
+        <svg
+          class="w-6 h-6 text-slate-700 group-hover:translate-x-0.5 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-12">
+      <button
+        class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center gap-2"
+      >
+        Meer over EdenIT
+        <img
+          src="/images/icons/arrow.png"
+          alt=" tick icon"
+          class="w-6 pl-1 h-full object-none"
+        />
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollContainer = document.getElementById("team-scroll");
+    const leftBtn = document.getElementById("team-left");
+    const rightBtn = document.getElementById("team-right");
+    const cardWidth = 288 + 24; // w-72 (288px) + gap-6 (24px)
+
+    // Touch scroll handling
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Button click handlers
+    leftBtn?.addEventListener("click", () => {
+      scrollContainer.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth"
+      });
+    });
+
+    rightBtn?.addEventListener("click", () => {
+      scrollContainer.scrollBy({
+        left: cardWidth,
+        behavior: "smooth"
+      });
+    });
+
+    // Mouse Events
+    scrollContainer.addEventListener('mousedown', (e) => {
+      isDown = true;
+      scrollContainer.style.cursor = 'grabbing';
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+      isDown = false;
+      scrollContainer.style.cursor = 'grab';
+    });
+
+    scrollContainer.addEventListener('mouseup', () => {
+      isDown = false;
+      scrollContainer.style.cursor = 'grab';
+    });
+
+    scrollContainer.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch Events
+    scrollContainer.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('touchend', () => {
+      isDown = false;
+    });
+
+    scrollContainer.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Scroll snap after scroll ends
+    let scrollTimeout;
+    scrollContainer.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollLeft = scrollContainer.scrollLeft;
+        const itemWidth = cardWidth;
+        const nearestItem = Math.round(scrollLeft / itemWidth);
+        
+        scrollContainer.scrollTo({
+          left: nearestItem * itemWidth,
+          behavior: 'smooth'
+        });
+      }, 150);
+    });
+  });
+</script>

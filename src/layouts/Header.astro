@@ -1,0 +1,309 @@
+---
+// Header.astro
+---
+
+// ...existing code...
+<header
+  class="bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-lg fixed top-0 left-0 w-full z-50 transition-all duration-300"
+>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center group">
+          <img
+            src="/images/logo.svg"
+            alt="EDENIT Logo"
+            class="w-full h-11 object-contain transition-transform duration-300"
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a
+            href="/"
+            class="text-gray-700 hover:text-orange-600 px-3 py-2 text-base font-medium transition-colors duration-200"
+          >
+            Home
+          </a>
+
+          <!-- Diensten Dropdown -->
+          <div class="relative group">
+            <button
+              class="text-gray-700 hover:text-orange-600 px-3 py-2 text-base font-medium flex items-center transition-colors duration-200"
+            >
+              Diensten
+              <svg
+                class="mt-1 ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-xl scale-95 opacity-0 invisible group-hover:scale-100 group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 origin-top"
+            >
+              <div class="py-1">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                  >Menu item</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                  >Menu item</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                  >Menu item</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                  >Menu item</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                  >Menu item</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="/werk"
+            class="text-gray-700 hover:text-orange-600 px-3 py-2 text-base font-medium transition-colors duration-200"
+          >
+            Werk
+          </a>
+          <a
+            href="/over"
+            class="text-gray-700 hover:text-orange-600 px-3 py-2 text-base font-medium transition-colors duration-200"
+          >
+            Over
+          </a>
+          <a
+            href="/blog"
+            class="text-gray-700 hover:text-orange-600 px-3 py-2 text-base font-medium transition-colors duration-200"
+          >
+            Blog
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Button -->
+      <div class="hidden md:block">
+        <a
+          href="/contact"
+          class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center shadow hover:shadow-lg"
+        >
+          Neem contact op
+          <svg
+            class="ml-2 w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="mobile-menu-button bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-all duration-300"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="menu-icon block h-6 w-6 transition-transform duration-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg
+            class="close-icon hidden h-6 w-6 transition-transform duration-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden md:hidden transition-all duration-300">
+      <div
+        class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg"
+      >
+        <a
+          href="/"
+          class="text-gray-700 hover:text-blue-500 block px-3 py-2 text-base font-medium transition-colors duration-200"
+        >
+          Home
+        </a>
+
+        <!-- Mobile Diensten Dropdown -->
+        <div class="relative">
+          <button
+            class="mobile-dropdown-button text-orange-500 hover:text-orange-600 block px-3 py-2 text-base font-medium w-full text-left flex items-center justify-between transition-colors duration-200"
+          >
+            Diensten
+            <svg
+              class="mobile-dropdown-icon w-4 h-4 transform transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            class="mobile-dropdown-menu hidden pl-6 space-y-1 transition-all duration-300"
+          >
+            <a
+              href="#"
+              class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-500 transition-colors duration-200"
+              >Menu item</a
+            >
+            <a
+              href="#"
+              class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-500 transition-colors duration-200"
+              >Menu item</a
+            >
+            <a
+              href="#"
+              class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-500 transition-colors duration-200"
+              >Menu item</a
+            >
+            <a
+              href="#"
+              class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-500 transition-colors duration-200"
+              >Menu item</a
+            >
+            <a
+              href="#"
+              class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-500 transition-colors duration-200"
+              >Menu item</a
+            >
+          </div>
+        </div>
+
+        <a
+          href="/werk"
+          class="text-gray-700 hover:text-blue-500 block px-3 py-2 text-base font-medium transition-colors duration-200"
+        >
+          Werk
+        </a>
+        <a
+          href="/over"
+          class="text-gray-700 hover:text-blue-500 block px-3 py-2 text-base font-medium transition-colors duration-200"
+        >
+          Over
+        </a>
+        <a
+          href="/blog"
+          class="text-gray-700 hover:text-blue-500 block px-3 py-2 text-base font-medium transition-colors duration-200"
+        >
+          Blog
+        </a>
+
+        <!-- Mobile Contact Button -->
+        <div class="pt-4">
+          <a
+            href="/contact"
+            class="bg-orange-500 hover:bg-orange-600 text-white block px-6 py-3 rounded-md text-base font-medium transition-all duration-300 flex items-center justify-center shadow hover:shadow-lg"
+          >
+            Neem contact op
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuButton = document.querySelector(".mobile-menu-button");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const menuIcon = document.querySelector(".menu-icon");
+    const closeIcon = document.querySelector(".close-icon");
+
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+      mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+        mobileMenu.classList.toggle("scale-95");
+        mobileMenu.classList.toggle("scale-100");
+        mobileMenu.classList.toggle("opacity-0");
+        mobileMenu.classList.toggle("opacity-100");
+      });
+    }
+
+    // Mobile dropdown toggle
+    const mobileDropdownButton = document.querySelector(
+      ".mobile-dropdown-button"
+    );
+    const mobileDropdownMenu = document.querySelector(".mobile-dropdown-menu");
+    const mobileDropdownIcon = document.querySelector(".mobile-dropdown-icon");
+
+    if (mobileDropdownButton && mobileDropdownMenu && mobileDropdownIcon) {
+      mobileDropdownButton.addEventListener("click", function () {
+        mobileDropdownMenu.classList.toggle("hidden");
+        mobileDropdownMenu.classList.toggle("scale-95");
+        mobileDropdownMenu.classList.toggle("scale-100");
+        mobileDropdownMenu.classList.toggle("opacity-0");
+        mobileDropdownMenu.classList.toggle("opacity-100");
+        mobileDropdownIcon.classList.toggle("rotate-180");
+      });
+    }
+  });
+</script>
