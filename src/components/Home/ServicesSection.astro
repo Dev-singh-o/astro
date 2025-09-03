@@ -1,177 +1,84 @@
----
-// ServicesSection.astro
+--- 
+const services = [
+  {
+    title: "Website bouwen",
+    description:
+      "Heb je nog geen website? Of wil je een frisse nieuwe website? Dan ben je op het juiste adres. Je krijgt een responsive en snelle website.",
+    iconSrc: "/images/bouwen.svg",
+    iconAlt: "Website bouwen icoon",
+  },
+  {
+    title: "Website verbeteren",
+    description:
+      "Wil je kleine aanpassingen aan je website? Wil je bezoekers beter overtuigen of beter gevonden worden? Ik help je graag met optimalisaties.",
+    iconSrc: "/images/verbeteren.svg",
+    iconAlt: "Website verbeteren icoon",
+  },
+  {
+    title: "WordPress onderhoud",
+    description:
+      "Zorg dat je WordPress-site up-to-date, veilig en snel blijft. Ik bied professioneel onderhoud, updates en ondersteuning voor optimale prestaties.",
+    iconSrc: "/images/onderhoud.svg",
+    iconAlt: "WordPress onderhoud icoon",
+  },
+  {
+    title: "Overige diensten",
+    description:
+      "Van SEO-optimalisatie tot maatwerkoplossingen, ik bied diverse diensten om je online aanwezigheid te versterken. Neem contact op voor meer informatie.",
+    iconSrc: "/images/diensten.svg",
+    iconAlt: "Overige diensten icoon",
+  },
+];
 ---
 
+<!-- Services Section Component -->
 <section class="bg-[#E4EFFA] py-16 lg:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
-      <div class="text-[#2980B9] font-medium text-lg mb-2">Onze diensten</div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+    <div class="mb-16 text-center">
+      <div class="mb-2 text-lg font-medium text-[#2980B9]">Onze diensten</div>
+      <h2 class="text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
         Van het maken tot onderhouden
       </h2>
     </div>
 
     <!-- Services Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <!-- Website bouwen -->
-      <div
-        class="bg-white rounded-2xl px-4 py-8 shadow-sm border-l-4 border-blue-500 hover:shadow-lg transition-shadow duration-300 group"
-      >
-        <div class="flex items-center justify-center gap-6">
-          <!-- Icon -->
-          <div
-            class="w-28 h-28 bg-gray-200 rounded-xl flex items-center justify-center flex-shrink-0"
-          >
-            <img
-              src="/images/bouwen.svg"
-              alt="Website bouwen icoon"
-              class="w-20 h-20 object-contain"
-            />
-          </div>
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      {services.map((service) => (
+        <div
+          class="group rounded-2xl border-l-4 border-blue-500 bg-white px-4 py-8 shadow-sm transition-shadow duration-300 hover:shadow-lg"
+        >
+          <div class="flex items-center justify-center gap-6">
+            <!-- Icon -->
+            <div
+              class="flex h-28 w-28 flex-shrink-0 items-center justify-center rounded-xl bg-gray-200"
+            >
+              <img
+                src={service.iconSrc}
+                alt={service.iconAlt}
+                class="h-20 w-20 object-contain"
+              />
+            </div>
 
-          <!-- Content -->
-          <div class="flex-1 px-4">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Website bouwen</h3>
-            <p class="text-base text-gray-600 font-normal ">
-              Heb je nog geen website? Of wil je een frisse nieuwe website? Dan
-              ben je op het juiste adres. Je krijgt een responsive en snelle
-              website.
-            </p>
-          </div>
+            <!-- Content -->
+            <div class="flex-1 px-4">
+              <h3 class="mb-2 text-xl font-bold text-gray-800">{service.title}</h3>
+              <p class="text-base font-normal text-gray-600">{service.description}</p>
+            </div>
 
-          <!-- Arrow Icon -->
-          <div
-            class="w-12 h-12 border border-gray-300 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-          >
-            <img
-              src="/images/icons/arroorg.png"
-              alt="Pijl icoon"
-              class="w-5 h-5 object-contain"
-            />
+            <!-- Arrow Icon -->
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 transition-colors duration-300"
+            >
+              <img
+                src="/images/icons/arroorg.png"
+                alt="Pijl icoon"
+                class="h-5 w-5 object-contain"
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Website verbeteren -->
-      <div
-        class="bg-white rounded-2xl px-4 py-8 shadow-sm border-l-4 border-blue-500 hover:shadow-lg transition-shadow duration-300 group"
-      >
-        <div class="flex items-center justify-center gap-6">
-          <!-- Icon -->
-          <div
-            class="w-28 h-28 bg-gray-200 rounded-xl flex items-center justify-center flex-shrink-0"
-          >
-            <img
-              src="/images/verbeteren.svg"
-              alt="Website bouwen icoon"
-              class="w-20 h-20 object-contain"
-            />
-          </div>
-
-          <!-- Content -->
-          <div class="flex-1 px-4">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">
-              Website verbeteren
-            </h3>
-            <p class="text-base text-gray-600 font-normal">
-              Heb je kleine aanpassingen aan je website nodig? Wil je bezoekers
-              beter overtuigen? Wil je beter gevonden worden? Ik help je graag.
-            </p>
-          </div>
-
-          <!-- Arrow Icon -->
-          <div
-            class="w-12 h-12 border border-gray-300 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-          >
-            <img
-              src="/images/icons/arroorg.png"
-              alt="Pijl icoon"
-              class="w-5 h-5 object-contain"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- WordPress onderhoud -->
-      <div
-        class="bg-white rounded-2xl px-4 py-8 shadow-sm border-l-4 border-blue-500 hover:shadow-lg transition-shadow duration-300 group"
-      >
-        <div class="flex items-center justify-center gap-6">
-          <!-- Icon -->
-          <div
-            class="w-28 h-28 bg-gray-200 rounded-xl flex items-center justify-center flex-shrink-0"
-          >
-            <img
-              src="/images/onderhoud.svg"
-              alt="Website bouwen icoon"
-              class="w-20 h-20 object-contain"
-            />
-          </div>
-
-          <!-- Content -->
-          <div class="flex-1 px-4">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">
-              WordPress onderhoud
-            </h3>
-            <p class="text-base text-gray-600 font-normal">
-              Heb je kleine aanpassingen aan je website nodig? Wil je bezoekers
-              beter overtuigen? Wil je beter gevonden worden? Ik help je graag.
-            </p>
-          </div>
-
-          <!-- Arrow Icon -->
-          <div
-            class="w-12 h-12 border border-gray-300 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-          >
-            <img
-              src="/images/icons/arroorg.png"
-              alt="Pijl icoon"
-              class="w-5 h-5 object-contain"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Overige diensten -->
-      <div
-        class="bg-white rounded-2xl px-4 py-8 shadow-sm border-l-4 border-blue-500 hover:shadow-lg transition-shadow duration-300 group"
-      >
-        <div class="flex items-center justify-center gap-6">
-          <!-- Icon -->
-          <div
-            class="w-28 h-28 bg-gray-200 rounded-xl flex items-center justify-center flex-shrink-0"
-          >
-            <img
-              src="/images/diensten.svg"
-              alt="Website bouwen icoon"
-              class="w-20 h-20 object-contain"
-            />
-          </div>
-
-          <!-- Content -->
-          <div class="flex-1 px-4">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">
-              Overige diensten
-            </h3>
-            <p class="text-base text-gray-600 font-normal">
-              Heb je kleine aanpassingen aan je website nodig? Wil je bezoekers
-              beter overtuigen? Wil je beter gevonden worden? Ik help je graag.
-            </p>
-          </div>
-
-          <!-- Arrow Icon -->
-          <div
-            class="w-12 h-12 border border-gray-300 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-          >
-            <img
-              src="/images/icons/arroorg.png"
-              alt="Pijl icoon"
-              class="w-5 h-5 object-contain"
-            />
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

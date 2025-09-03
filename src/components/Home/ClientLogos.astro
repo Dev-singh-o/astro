@@ -4,162 +4,190 @@ const logos = [
   { src: "/images/houwers.png", alt: "Houwers logo" },
   { src: "/images/perfectvoip.png", alt: "PerfectVoip logo" },
   { src: "/images/studiobalans.png", alt: "Studio Balans logo" },
-  { src: "/images/stormvans.png", alt: "Storm Vans logo" }
+  { src: "/images/stormvans.png", alt: "Storm Vans logo" },
 ];
 ---
 
+<!-- Logos Section Component -->
 <section class="bg-white py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-xl md:text-2xl text-gray-700 font-medium">
+    <div class="mb-16 text-center">
+      <h2 class="text-xl font-medium text-gray-700 md:text-2xl">
         We werken voor onder andere:
       </h2>
     </div>
 
-    <!-- Logos Container -->
+    <!-- Logos Carousel -->
     <div class="relative">
+      <!-- Left Scroll Button -->
       <button
         id="scroll-left"
-        class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
+        class="absolute left-0 hidden top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
         aria-label="Scroll left"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
         </svg>
       </button>
 
-      <div class="overflow-hidden mx-16"> <!-- Changed from overflow-x-auto to overflow-hidden -->
+      <!-- Logos Container -->
+      <div class="mx-16 overflow-hidden">
         <div
           id="logos-scroll"
           class="flex items-center gap-12 py-4 transition-transform duration-300 ease-out"
           style="min-width: max-content;"
         >
-          {[...logos, ...logos].map((logo, index) => (
-            <div
-              key={`${logo.alt}-${index}`}
-              class="flex-none w-[150px] grayscale hover:grayscale-0 transition-all duration-300 opacity-90 hover:opacity-100"
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                class="w-full h-16 object-contain"
-                loading="lazy"
-                draggable="false"
-              />
-            </div>
-          ))}
+          {
+            [...logos, ...logos].map((logo, index) => (
+              <div
+                key={`${logo.alt}-${index}`}
+                class="flex-none w-[150px] opacity-90 grayscale transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  class="h-16 w-full object-contain"
+                  loading="lazy"
+                  draggable="false"
+                />
+              </div>
+            ))
+          }
         </div>
       </div>
 
-      <!-- Right Arrow -->
+      <!-- Right Scroll Button -->
       <button
         id="scroll-right"
-        class="absolute right-0 top-1/2 transform -translate-y-1/2 w-12 h-12 border border-[#2980B9] bg-white/60 backdrop-blur-md rounded-full flex items-center justify-center text-[#2980B9] transition-all duration-300 shadow-xl hover:bg-white/80 hover:scale-105"
+        class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#2980B9] bg-white/60 text-[#2980B9] shadow-xl backdrop-blur-md transition-all duration-300 hover:bg-white/80 hover:scale-105"
         aria-label="Scroll right"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
         </svg>
       </button>
     </div>
   </div>
 </section>
 
+<!-- Carousel Interaction Script -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollContainer = document.getElementById('logos-scroll');
-    const leftBtn = document.getElementById('scroll-left');
-    const rightBtn = document.getElementById('scroll-right');
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollContainer = document.getElementById("logos-scroll");
+    const leftBtn = document.getElementById("scroll-left");
+    const rightBtn = document.getElementById("scroll-right");
     const scrollAmount = 300;
     let currentPosition = 0;
 
     if (!scrollContainer || !leftBtn || !rightBtn) return;
 
     // Calculate max scroll
-    const maxScroll = scrollContainer.scrollWidth - scrollContainer.parentElement.clientWidth;
+    const maxScroll =
+      scrollContainer.scrollWidth - scrollContainer.parentElement.clientWidth;
+
+    // Update button visibility
+    function updateButtonVisibility() {
+      leftBtn.classList.toggle("hidden", currentPosition >= 0);
+      rightBtn.classList.toggle("hidden", currentPosition <= -maxScroll);
+    }
+
+    // Update scroll position
+    function updatePosition() {
+      scrollContainer.style.transform = `translateX(${currentPosition}px)`;
+      updateButtonVisibility();
+    }
 
     // Button Controls
-    leftBtn.addEventListener('click', () => {
+    leftBtn.addEventListener("click", () => {
       currentPosition = Math.min(currentPosition + scrollAmount, 0);
       updatePosition();
     });
 
-    rightBtn.addEventListener('click', () => {
+    rightBtn.addEventListener("click", () => {
       currentPosition = Math.max(currentPosition - scrollAmount, -maxScroll);
       updatePosition();
     });
-
-    function updatePosition() {
-      scrollContainer.style.transform = `translateX(${currentPosition}px)`;
-    }
 
     // Touch and Mouse Scroll
     let isDown = false;
     let startX;
     let startPosition;
 
-    scrollContainer.addEventListener('mousedown', (e) => {
+    scrollContainer.addEventListener("mousedown", (e) => {
       isDown = true;
-      scrollContainer.style.cursor = 'grabbing';
+      scrollContainer.style.cursor = "grabbing";
       startX = e.pageX;
       startPosition = currentPosition;
       e.preventDefault();
     });
 
-    scrollContainer.addEventListener('mouseleave', () => {
+    scrollContainer.addEventListener("mouseleave", () => {
       isDown = false;
-      scrollContainer.style.cursor = 'grab';
+      scrollContainer.style.cursor = "grab";
     });
 
-    scrollContainer.addEventListener('mouseup', () => {
+    scrollContainer.addEventListener("mouseup", () => {
       isDown = false;
-      scrollContainer.style.cursor = 'grab';
+      scrollContainer.style.cursor = "grab";
     });
 
-    scrollContainer.addEventListener('mousemove', (e) => {
+    scrollContainer.addEventListener("mousemove", (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX;
       const walk = (x - startX) * 1.5;
-      currentPosition = Math.max(
-        Math.min(startPosition + walk, 0),
-        -maxScroll
-      );
+      currentPosition = Math.max(Math.min(startPosition + walk, 0), -maxScroll);
       updatePosition();
     });
 
-    // Touch events
-    scrollContainer.addEventListener('touchstart', (e) => {
+    // Touch Events
+    scrollContainer.addEventListener("touchstart", (e) => {
       isDown = true;
       startX = e.touches[0].pageX;
       startPosition = currentPosition;
     });
 
-    scrollContainer.addEventListener('touchend', () => {
+    scrollContainer.addEventListener("touchend", () => {
       isDown = false;
     });
 
-    scrollContainer.addEventListener('touchmove', (e) => {
+    scrollContainer.addEventListener("touchmove", (e) => {
       if (!isDown) return;
       const x = e.touches[0].pageX;
       const walk = (x - startX) * 1.5;
-      currentPosition = Math.max(
-        Math.min(startPosition + walk, 0),
-        -maxScroll
-      );
+      currentPosition = Math.max(Math.min(startPosition + walk, 0), -maxScroll);
       updatePosition();
     });
   });
 </script>
 
+<!-- Component-Specific Styles -->
 <style>
   #logos-scroll {
     -ms-overflow-style: none;
     scrollbar-width: none;
     will-change: transform;
   }
-  
+
   #logos-scroll::-webkit-scrollbar {
     display: none;
   }
